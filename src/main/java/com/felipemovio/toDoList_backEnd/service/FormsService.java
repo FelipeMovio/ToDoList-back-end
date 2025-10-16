@@ -40,6 +40,23 @@ public class FormsService {
         return modelMapper.map(repository.save(form), FormsResponseDTO.class);
     }
 
+
+    public FormsResponseDTO atualizar(Long id, FormsRequestDTO dto) throws Exception {
+        Forms form = repository.findById(id)
+                .orElseThrow(() -> new Exception("Formulário não encontrado com ID: " + id));
+
+        // Mapeia apenas os campos necessários do DTO para a entidade (sem tocar no ID)
+        form.setTitulo(dto.getTitulo());
+        form.setCategoria(dto.getCategoria());
+        form.setTempo(dto.getTempo());
+        form.setCompleted(dto.isCompleted());
+
+        Forms atualizado = repository.save(form);
+
+        return modelMapper.map(atualizado, FormsResponseDTO.class);
+    }
+
+
     public void deletar(Long id){
         repository.deleteById(id);
     }

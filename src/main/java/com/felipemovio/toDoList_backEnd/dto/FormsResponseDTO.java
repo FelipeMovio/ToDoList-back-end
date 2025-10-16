@@ -9,5 +9,5 @@ public class FormsResponseDTO {
     private String titulo;
     private Categoria categoria;
     private Integer tempo;
-    private boolean isCompleted;
+    private boolean completed;
 }

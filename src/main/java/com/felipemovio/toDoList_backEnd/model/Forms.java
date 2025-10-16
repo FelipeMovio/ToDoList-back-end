@@ -26,5 +26,5 @@ public class Forms {
 
     private Integer tempo;
 
-    private boolean isCompleted = false;
+    private boolean completed;
 }
